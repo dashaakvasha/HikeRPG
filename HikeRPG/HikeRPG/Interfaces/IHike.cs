@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace HikeRPG.Interfaces
 {
-    internal class IHike
+    public interface IHike
     {
+        int GetXP(HikeRPG.Models.CharacterStats stats);
+        float GetDifficulty();
     }
 }

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace HikeRPG.Interfaces
 {
-    internal class IHikeObserver
+    public interface IHikeObserver
     {
+        void Update(HikeRPG.Models.Hike hike);
+        string GetName();
     }
 }

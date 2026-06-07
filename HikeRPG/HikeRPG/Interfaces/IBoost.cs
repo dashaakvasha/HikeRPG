@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace HikeRPG.Interfaces
 {
-    internal class IBoost
+    public interface IBoost
     {
+        void ApplyBoost(HikeRPG.Models.CharacterStats stats);
+        string GetDescription();
     }
 }

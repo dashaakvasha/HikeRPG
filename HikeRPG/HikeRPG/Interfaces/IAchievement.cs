@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace HikeRPG.Interfaces
 {
-    internal class IAchievement
+    public interface IAchievement
     {
+        bool IsUnlocked(HikeRPG.Models.CharacterStats stats);
+        string GetName();
     }
 }

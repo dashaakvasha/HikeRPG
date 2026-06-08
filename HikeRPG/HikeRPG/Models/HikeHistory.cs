@@ -32,7 +32,7 @@ namespace HikeRPG.Models
         {
          int total = 0;
             foreach(var hike in _hikes)
-                total += hike.ElevationKm;
+                total += hike.ElevationM;
             return total;
         }
     }

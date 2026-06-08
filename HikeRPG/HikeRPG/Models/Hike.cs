@@ -11,14 +11,14 @@ namespace HikeRPG.Models
     {
         public string Name { get; set; }
         public float DistanceKm { get; set; }
-        public int ElevationKm { get; set; }
+        public int ElevationM { get; set; }
         public DateTime Date { get; set; }  
 
-        public Hike(string name, float distanceKm, int elevationKm, DateTime date)
+        public Hike(string name, float distanceKm, int elevationM, DateTime date)
         {
             Name = name;
             DistanceKm = distanceKm;
-            ElevationKm = elevationKm;
+            ElevationM = elevationM;
             Date = date;
         }
 

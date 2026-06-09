@@ -16,6 +16,8 @@ namespace HikeRPG.Models
         public float TotalDistance { get; set; } = 0f;
         public int TotalElevation { get; set; } = 0;
 
+        public int CurrentStreak { get; set; } = 0;
+
 
     }
 }

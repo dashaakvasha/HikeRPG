@@ -26,7 +26,7 @@ namespace HikeRPG.Hikes
                     return new NightHike(name, distanceKm, elevationM, date, intParam, boolParam);
 
                 default:
-                    throw new Exception("Hiike type '" + type + "' does not exist. Use: trail, mountain, night");
+                    throw new Exception("Hike type '" + type + "' does not exist. Use: trail, mountain, night");
             }
         }
     }

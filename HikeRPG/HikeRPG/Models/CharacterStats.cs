@@ -18,6 +18,7 @@ namespace HikeRPG.Models
 
         public int CurrentStreak { get; set; } = 0;
 
+        public DateTime LastHikeDate { get; set; } = DateTime.MinValue;
 
     }
 }

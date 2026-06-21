@@ -52,5 +52,15 @@ namespace HikeRPG.Data
                 return new Dictionary<string, CharacterStats>();
             }
         }
+        public void RemoveLeaderboardEntry(string name)
+        {
+            Dictionary<string, CharacterStats> allPlayers = LoadAllPlayers();
+            if (allPlayers.ContainsKey(name))
+            {
+                allPlayers.Remove(name);
+                string json = JsonConvert.SerializeObject(allPlayers, Formatting.Indented);
+                File.WriteAllText("leaderboard.json", json);
+            }
+        }
     }
 }

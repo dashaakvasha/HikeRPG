@@ -32,12 +32,30 @@ namespace HikeRPG.Observers
             {
                 if (!_alreadyShown.Contains(badge))
                 {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.Write($"\r🏆 Achievement Unlocked: {badge}! 🏆");
+                        Thread.Sleep(200);
+                        Console.Write($"\r                                          ");
+                        Thread.Sleep(100);
+                    }
+
+                    PlayAchievementSound();
+
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine($"🏆 Achievement Unlocked: {badge}!");
+                    Console.WriteLine($"\r🏆 Achievement Unlocked: {badge}! 🏆");
                     Console.ResetColor();
                     _alreadyShown.Add(badge);
                 }
             }
+        }
+
+        private void PlayAchievementSound()
+        {
+            Console.Beep(523, 100);
+            Console.Beep(659, 100);
+            Console.Beep(784, 150);
         }
 
         public string GetName()

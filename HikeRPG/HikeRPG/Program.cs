@@ -9,21 +9,31 @@ namespace HikeRPG
     {
         static void Main(string[] args)
         {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            ConsoleUI.ShowStartupScreen();
 
             bool playingGame = true;
 
             while (playingGame)
             {
                 Console.Write("Enter your hero's name: ");
-                string playerName = Console.ReadLine();
+                string playerName = Console.ReadLine().Trim();
 
                 string savePath = playerName + "_save.json";
 
                 GameEngine engine = new GameEngine(playerName, savePath);
                 ConsoleUI ui = new ConsoleUI(engine);
 
-                engine.StartGame();
+                if (engine.IsNewPlayer)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"🌟 Welcome, new adventurer {playerName}! Your journey begins now!");
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine($"🥾 Welcome back, {playerName}! Ready for more adventures?");
+                }
+                Console.ResetColor();
 
                 bool running = true;
 
@@ -77,6 +87,7 @@ namespace HikeRPG
                         }
 
                         engine.ProcessHike(hike);
+                        ui.ShowProcessingHike();
                         engine.SaveProgress();
                         Console.WriteLine("Hike logged! Check your stats!");
                     }
@@ -108,6 +119,20 @@ namespace HikeRPG
                         engine.SaveProgress();
                         running = false;
                         Console.WriteLine("Switching character...");
+                    }
+                    else if (choice == "7")
+                    {
+                        Console.Write("Are you sure you want to delete your leaderboard entry? (yes/no): ");
+                        string confirm = ui.GetInput().ToLower().Trim();
+                        if (confirm == "yes")
+                        {
+                            engine.RemoveFromLeaderboard(playerName);
+                            Console.WriteLine("Removed from leaderboard!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Cancelled.");
+                        }
                     }
                     else
                     {

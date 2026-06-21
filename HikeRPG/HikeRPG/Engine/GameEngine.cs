@@ -15,6 +15,8 @@ namespace HikeRPG.Engine
         private Leaderboard _leaderboard;
         private BadgeCollection _badgeCollection;
 
+        public bool IsNewPlayer { get; private set; }
+
         public GameEngine(string playerName, string savePath)
         {
             _character = new Character(playerName);
@@ -23,6 +25,8 @@ namespace HikeRPG.Engine
             _leaderboard = new Leaderboard();
 
             _leaderboard.AddPlayer(_character);
+
+            IsNewPlayer = !File.Exists(savePath);
 
             LoadProgress();
             SetupAchievements();
@@ -112,6 +116,12 @@ namespace HikeRPG.Engine
                 return sorted.GetRange(0, n);
             else
                 return sorted;
+        }
+
+        public void RemoveFromLeaderboard(string name)
+        {
+            _storage.RemoveLeaderboardEntry(name);
+            _leaderboard.RemovePlayer(_character);
         }
     }
 }

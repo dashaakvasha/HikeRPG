@@ -13,6 +13,39 @@ namespace HikeRPG.UI
             _engine = engine;
         }
 
+        public static void ShowStartupScreen()
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine();
+            Console.WriteLine("        ⛰");
+            Console.WriteLine("       ⛰⛰⛰");
+            Console.WriteLine("      ⛰⛰⛰⛰⛰");
+            Console.WriteLine();
+
+            string title = "  H I K E   R P G";
+            foreach (char c in title)
+            {
+                Console.Write(c);
+                Thread.Sleep(50);
+            }
+            Console.WriteLine();
+            Console.ResetColor();
+            Console.WriteLine();
+
+            Console.Write("Loading your adventure... ");
+            for (int i = 0; i <= 20; i++)
+            {
+                Console.Write("█");
+                Thread.Sleep(50);
+            }
+            Console.WriteLine(" 100%");
+            Console.WriteLine();
+
+            Console.WriteLine("Press any key to begin...");
+            Console.ReadKey();
+            Console.Clear();
+        }
         public void TypeText(string text, int delay)
         {
             foreach (char c in text)
@@ -21,6 +54,18 @@ namespace HikeRPG.UI
                 Thread.Sleep(delay);
             }
             Console.WriteLine();
+        }
+
+        public void ShowProcessingHike()
+        {
+            Console.Write("🥾 Processing your hike  [");
+            for (int i = 0; i < 15; i++)
+            {
+                Console.Write("🟩");
+                Thread.Sleep(100);
+            }
+            Console.WriteLine("] ✅");
+            Thread.Sleep(300);
         }
 
         public void ShowMenu()
@@ -45,6 +90,7 @@ namespace HikeRPG.UI
             Console.WriteLine("  [4] 🏅 Leaderboard");
             Console.WriteLine("  [5] 🚪 Exit");
             Console.WriteLine("  [6] 🔄 Switch Character");
+            Console.WriteLine("  [7] 🗑 Delete Leaderboard Entry");
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("╚══════════════════════════════════════╝");
             Console.ResetColor();

@@ -15,7 +15,7 @@ namespace HikeRPG.Achievements
         private bool _unlocked;
         private string _name;
 
-        public DistanceAchievement(float threshold, string name)
+        public DistanceAchievement(string name, float threshold)
         {
             _threshold = threshold;
             _unlocked = false;

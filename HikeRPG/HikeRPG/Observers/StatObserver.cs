@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using HikeRPG.Interfaces;
+﻿using HikeRPG.Interfaces;
 using HikeRPG.Models;
 
 namespace HikeRPG.Observers
@@ -22,7 +16,9 @@ namespace HikeRPG.Observers
         {
             CharacterStats stats = _character.GetStats();
 
-            stats.XP += hike.GetXP(stats);
+            int xpGained = hike.GetXP(stats);
+            stats.XP += xpGained;
+            stats.TotalXP += xpGained;
             stats.TotalDistance += hike.DistanceKm;
             stats.TotalElevation += hike.ElevationM;
             stats.Strength += (int)(hike.ElevationM * 0.01f);
@@ -40,11 +36,10 @@ namespace HikeRPG.Observers
             {
                 stats.CurrentStreak = 1;
             }
-
             else if (stats.LastHikeDate.Date == hike.Date.Date.AddDays(-1))
-                {
-                    stats.CurrentStreak++;
-                }
+            {
+                stats.CurrentStreak++;
+            }
             else if (stats.LastHikeDate.Date != hike.Date.Date)
             {
                 stats.CurrentStreak = 0;
@@ -52,6 +47,7 @@ namespace HikeRPG.Observers
 
             stats.LastHikeDate = hike.Date;
         }
+
         public string GetName()
         {
             return "StatObserver";

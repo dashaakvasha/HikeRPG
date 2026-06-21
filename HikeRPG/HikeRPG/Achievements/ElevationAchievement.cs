@@ -14,7 +14,7 @@ namespace HikeRPG.Achievements
         private bool _unlocked;
         private string _name;
 
-        public ElevationAchievement(int maxHeight, string name)
+        public ElevationAchievement(string name, int maxHeight)
         {
             _minHeight = maxHeight;
             _unlocked = false;

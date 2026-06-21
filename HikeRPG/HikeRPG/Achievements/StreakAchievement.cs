@@ -15,7 +15,7 @@ namespace HikeRPG.Achievements
         private bool _unlocked;
 
 
-        public StreakAchievement(int days, string name)
+        public StreakAchievement(string name, int days)
         {
             _days = days;
             _name = name;

@@ -13,7 +13,7 @@ namespace HikeRPG.Observers
         private Character _character;
         private int[] _xpThresholds;
 
-        public LevelObserver(Character character, int xpThresholds)
+        public LevelObserver(Character character)
         {
             _character = character;
             _xpThresholds = new int[] { 100, 250, 500, 1000, 2000 };

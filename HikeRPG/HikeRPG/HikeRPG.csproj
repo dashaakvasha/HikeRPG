@@ -8,9 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Engine\" />
     <Folder Include="Data\" />
-    <Folder Include="UI\" />
   </ItemGroup>
 
   <ItemGroup>

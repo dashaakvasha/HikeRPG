@@ -88,9 +88,10 @@ namespace HikeRPG.UI
             Console.WriteLine("  [2] 📊 My Stats");
             Console.WriteLine("  [3] 🏆 Achievements");
             Console.WriteLine("  [4] 🏅 Leaderboard");
-            Console.WriteLine("  [5] 🚪 Exit");
+            Console.WriteLine("  [5] 📜 View Hike History");
             Console.WriteLine("  [6] 🔄 Switch Character");
             Console.WriteLine("  [7] 🗑 Delete Leaderboard Entry");
+            Console.WriteLine("  [8] 🚪 Exit  ");
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("╚══════════════════════════════════════╝");
             Console.ResetColor();
@@ -201,6 +202,32 @@ namespace HikeRPG.UI
                     Console.WriteLine($"  {rank}. {entry.Key} - {entry.Value.TotalXP} XP");
                     rank++;
                 }
+            }
+            Console.WriteLine();
+        }
+
+        public void ShowHikeHistory(HikeHistory history)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("╔══════════════════════════════════════╗");
+            Console.WriteLine("           📜 HIKE HISTORY 📜          ");
+            Console.WriteLine("╚══════════════════════════════════════╝");
+            Console.ResetColor();
+
+            List<Hike> hikes = history.GetAll();
+
+            if (hikes.Count == 0)
+            {
+                Console.WriteLine("No hikes logged yet!");
+            }
+            else
+            {
+                foreach (Hike hike in hikes)
+                {
+                    Console.WriteLine($"  {hike.Date:yyyy-MM-dd} - {hike.Name} - {hike.DistanceKm} km - {hike.ElevationM}m elevation");
+                }
+                Console.WriteLine();
+                Console.WriteLine($"Total distance hiked: {history.GetTotalDistance()} km");
             }
             Console.WriteLine();
         }

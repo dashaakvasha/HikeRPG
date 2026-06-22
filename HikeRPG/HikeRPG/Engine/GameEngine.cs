@@ -29,6 +29,7 @@ namespace HikeRPG.Engine
             IsNewPlayer = !File.Exists(savePath);
 
             LoadProgress();
+            LoadHikeHistory();
             RegenerateEnergy();
             SetupAchievements();
             SetupObservers();
@@ -56,7 +57,7 @@ namespace HikeRPG.Engine
             _badgeCollection.Add(new DistanceAchievement("First Steps", 10f));
             _badgeCollection.Add(new DistanceAchievement("Trail Legend", 100f));
             _badgeCollection.Add(new ElevationAchievement("Hill Crusher", 500));
-            _badgeCollection.Add(new ElevationAchievement("Summit Slayer", 5000));
+            _badgeCollection.Add(new ElevationAchievement("Sky Walker", 5000));
             _badgeCollection.Add(new StreakAchievement("Unstoppable", 7));
         }
 
@@ -91,10 +92,16 @@ namespace HikeRPG.Engine
             return _leaderboard;
         }
 
+        public HikeHistory GetHikeHistory()
+        {
+            return _character.GetHikeHistory();
+        }
+
         public void SaveProgress()
         {
             _storage.Save(_character);
             _storage.SaveLeaderboardEntry(_character.GetName(), _character.GetStats());
+            _storage.SaveHikeHistory(_character.GetName(), _character.GetHikeHistory().GetAll());
         }
 
         public void LoadProgress()
@@ -112,6 +119,15 @@ namespace HikeRPG.Engine
             currentStats.TotalElevation = loadedStats.TotalElevation;
             currentStats.CurrentStreak = loadedStats.CurrentStreak;
             currentStats.LastHikeDate = loadedStats.LastHikeDate;
+        }
+
+        private void LoadHikeHistory()
+        {
+            List<Hike> savedHikes = _storage.LoadHikeHistory(_character.GetName());
+            foreach (Hike hike in savedHikes)
+            {
+                _character.GetHikeHistory().GetAll().Add(hike);
+            }
         }
 
         public List<KeyValuePair<string, CharacterStats>> GetGlobalLeaderboard(int n)

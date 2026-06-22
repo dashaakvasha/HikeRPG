@@ -60,6 +60,10 @@ namespace HikeRPG.Models
             return _stats;
         }
 
+        public HikeHistory GetHikeHistory()
+        {
+            return _hikeHistory;
+        }
         public string GetName()
         {
             return _name;

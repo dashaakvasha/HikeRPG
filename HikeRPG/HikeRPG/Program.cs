@@ -119,11 +119,8 @@ namespace HikeRPG
                     }
                     else if (choice == "5")
                     {
-                        engine.SaveProgress();
-                        running = false;
-                        playingGame = false;
-                        CharacterStats finalStats = engine.GetCharacter().GetStats();
-                        ConsoleUI.ShowGoodbyeScreen(playerName, finalStats.Level, finalStats.TotalXP);
+                        HikeHistory history = engine.GetHikeHistory();
+                        ui.ShowHikeHistory(history);
                     }
                     else if (choice == "6")
                     {
@@ -144,6 +141,14 @@ namespace HikeRPG
                         {
                             Console.WriteLine("Cancelled.");
                         }
+                    }
+                    else if (choice == "8")
+                    {
+                        engine.SaveProgress();
+                        running = false;
+                        playingGame = false;
+                        CharacterStats finalStats = engine.GetCharacter().GetStats();
+                        ConsoleUI.ShowGoodbyeScreen(playerName, finalStats.Level, finalStats.TotalXP);
                     }
                     else
                     {

@@ -25,6 +25,12 @@ namespace HikeRPG.Observers
             stats.Stamina += (int)(hike.DistanceKm * 0.5f);
             stats.Energy -= (int)(hike.GetDifficulty() * 10);
 
+            if (stats.Energy < 0)
+                stats.Energy = 0;
+
+            if (stats.Energy > 100)
+                stats.Energy = 100;
+
             UpdateStreak(hike);
         }
 

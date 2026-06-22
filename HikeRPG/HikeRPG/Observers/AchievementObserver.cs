@@ -41,21 +41,12 @@ namespace HikeRPG.Observers
                         Thread.Sleep(100);
                     }
 
-                    PlayAchievementSound();
-
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine($"\r🏆 Achievement Unlocked: {badge}! 🏆");
                     Console.ResetColor();
                     _alreadyShown.Add(badge);
                 }
             }
-        }
-
-        private void PlayAchievementSound()
-        {
-            Console.Beep(523, 100);
-            Console.Beep(659, 100);
-            Console.Beep(784, 150);
         }
 
         public string GetName()

@@ -44,6 +44,16 @@ namespace HikeRPG
 
                     if (choice == "1")
                     {
+                        CharacterStats currentStats = engine.GetCharacter().GetStats();
+
+                        if (currentStats.Energy <= 0)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("⚠ You're too exhausted to hike! Rest and try again later.");
+                            Console.ResetColor();
+                            continue;
+                        }
+
                         Console.Write("Hike name: ");
                         string name = ui.GetInput();
 
@@ -112,7 +122,8 @@ namespace HikeRPG
                         engine.SaveProgress();
                         running = false;
                         playingGame = false;
-                        Console.WriteLine("Goodbye, hiker!");
+                        CharacterStats finalStats = engine.GetCharacter().GetStats();
+                        ConsoleUI.ShowGoodbyeScreen(playerName, finalStats.Level, finalStats.TotalXP);
                     }
                     else if (choice == "6")
                     {

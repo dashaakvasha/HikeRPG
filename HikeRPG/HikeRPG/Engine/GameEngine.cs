@@ -29,8 +29,17 @@ namespace HikeRPG.Engine
             IsNewPlayer = !File.Exists(savePath);
 
             LoadProgress();
+            RegenerateEnergy();
             SetupAchievements();
             SetupObservers();
+        }
+
+        private void RegenerateEnergy()
+        {
+            CharacterStats stats = _character.GetStats();
+            stats.Energy += 20;
+            if (stats.Energy > 100)
+                stats.Energy = 100;
         }
 
         private void SetupObservers()

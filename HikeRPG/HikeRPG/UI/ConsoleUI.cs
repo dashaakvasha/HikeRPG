@@ -218,5 +218,44 @@ namespace HikeRPG.UI
             TypeText($"⚡⚡⚡ LEVEL UP! You are now Level {level}! ⚡⚡⚡", 30);
             Console.ResetColor();
         }
+
+        public static void ShowGoodbyeScreen(string playerName, int level, int totalXP)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine();
+            Console.WriteLine("        ⛰");
+            Console.WriteLine("       ⛰⛰⛰");
+            Console.WriteLine("      ⛰⛰⛰⛰⛰");
+            Console.WriteLine();
+
+            string message = $"  Until next time, {playerName}...";
+            foreach (char c in message)
+            {
+                Console.Write(c);
+                Thread.Sleep(40);
+            }
+            Console.WriteLine();
+            Thread.Sleep(400);
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine();
+            Console.WriteLine($"  🌟 Final Level: {level}");
+            Thread.Sleep(300);
+            Console.WriteLine($"  ✨ Total XP Earned: {totalXP}");
+            Thread.Sleep(500);
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine();
+            string farewell = "  The mountains will be waiting. 🥾";
+            foreach (char c in farewell)
+            {
+                Console.Write(c);
+                Thread.Sleep(40);
+            }
+            Console.WriteLine();
+            Console.ResetColor();
+            Thread.Sleep(800);
+        }
     }
 }

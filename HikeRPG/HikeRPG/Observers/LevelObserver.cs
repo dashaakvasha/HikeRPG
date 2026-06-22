@@ -36,18 +36,8 @@ namespace HikeRPG.Observers
                     }
                     Console.WriteLine();
                     Console.ResetColor();
-
-                    PlayLevelUpSound();
                 }
             }
-        }
-
-        private void PlayLevelUpSound()
-        {
-            Console.Beep(523, 150);
-            Console.Beep(659, 150);
-            Console.Beep(784, 150);
-            Console.Beep(1047, 300);
         }
 
         public string GetName()

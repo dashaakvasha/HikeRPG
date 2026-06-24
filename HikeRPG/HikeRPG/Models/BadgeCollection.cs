@@ -26,15 +26,6 @@ namespace HikeRPG.Models
             }
             return earned;
         }
-
-        public void UnlockAll(CharacterStats stats)
-        {
-            foreach (var badge in _badges)
-            {
-                if (badge.IsUnlocked(stats))
-                    Console.WriteLine($"Achievement unlocked: {badge.GetName()} ");
-            }
-        }
     }
 }
 

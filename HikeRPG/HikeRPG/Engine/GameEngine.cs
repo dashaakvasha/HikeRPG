@@ -56,9 +56,9 @@ namespace HikeRPG.Engine
 
             _badgeCollection.Add(new DistanceAchievement("First Steps", 10f));
             _badgeCollection.Add(new DistanceAchievement("Trail Legend", 100f));
-            _badgeCollection.Add(new ElevationAchievement("Hill Crusher", 500));
+            _badgeCollection.Add(new ElevationAchievement("Hill Crusher", 1000));
             _badgeCollection.Add(new ElevationAchievement("Sky Walker", 5000));
-            _badgeCollection.Add(new StreakAchievement("Unstoppable", 7));
+            _badgeCollection.Add(new StreakAchievement("Unstoppable", 2));
         }
 
         public void StartGame()
